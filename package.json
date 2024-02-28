@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "start": "node dist/server.ts",
     "dev": "nodemon src/server.ts",
-    "test": "jest --watch",
+    "test": "jest --watchAll",
     "test:ci": "jest"
   },
   "author": "",
