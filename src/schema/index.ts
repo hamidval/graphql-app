@@ -53,11 +53,11 @@ export const resolvers: any =
             {
                 lessonInput: 
                 {
-                    filter: {id: id, day: day, studentId: studentId, teacherId: teacherId}
+                    filter: {id: id, day: day, studentId: studentId, teacherId: teacherId, notDay: notDay}
                 }
             } = args; 
 
-            var lessons =  (new LessonTransforms()).lessons(await ctx.dataSources.OaDb.getLessons(id, day, studentId, teacherId));
+            var lessons =  (new LessonTransforms()).lessons(await ctx.dataSources.OaDb.getLessons(id, day, studentId, teacherId, notDay));
          
             return lessons;
         },

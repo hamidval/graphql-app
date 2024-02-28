@@ -7,6 +7,7 @@ export const typeDef = gql`
         studentId:Int
         day:Int
         teacherId: Int
+        notDay: Int
     }
 
     input LessonInput 

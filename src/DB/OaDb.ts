@@ -1,4 +1,4 @@
-import { FindOptions } from "sequelize";
+import { FindOptions, Op, Sequelize } from "sequelize";
 import { SequelizeDataSource } from "./index";
 import { Lesson } from "./models/Lesson";
 import { Student } from "./models/Student";
@@ -13,7 +13,7 @@ import TakenLessonTransforms from "./transforms/takenLesson";
 
 type where ={
   id?: number | null | number[],
-  day?: number,
+  day?: any,
   studentId?: number,
   teacherId?: number | number[],
   parentId?:number | number [] 
@@ -78,13 +78,13 @@ export default class OaDb extends SequelizeDataSource
       
      }
 
-     public async getLessons(id:number | null = null, day: number | null, studentId: number | null, teacherId: number | null)
+     public async getLessons(id:number | null = null, day: number | null, studentId: number | null, teacherId: number | null, notDay: number | null)
      {
       var query:FindOptions = {}
 
       let _where:where = {}
       _where.teacherId = whiteList();
-      if(id == null && studentId == null && day == null && teacherId == null)
+      if(id == null && studentId == null && day == null && teacherId == null && notDay == null)
       {
         query.limit = 10;
       }else
@@ -100,6 +100,10 @@ export default class OaDb extends SequelizeDataSource
 
         if(day){
           _where.day = day
+        }
+
+        if(notDay){
+          _where.day = {[Op.not]: notDay}
         }
 
         if(teacherId)
