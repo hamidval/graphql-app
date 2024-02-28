@@ -8,12 +8,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = require("./index");
 const Lesson_1 = require("./models/Lesson");
 const Student_1 = require("./models/Student");
 const Parent_1 = require("./models/Parent");
 const TakenLesson_1 = require("./models/TakenLesson");
+const utils_1 = require("../utils");
+const Teacher_1 = require("./models/Teacher");
+const teacher_1 = require("./transforms/teacher");
+const takenLesson_1 = __importDefault(require("./transforms/takenLesson"));
 class OaDb extends index_1.SequelizeDataSource {
     getParents(id = null) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -36,46 +43,89 @@ class OaDb extends index_1.SequelizeDataSource {
             return data;
         });
     }
-    getAllStudents(id = null, inlcudeLessons = false) {
+    getAllStudents(id = null, parentId = null, inlcudeLessons = false) {
         return __awaiter(this, void 0, void 0, function* () {
             var query = {};
-            if (id == null) {
+            let where = {};
+            if (id == null && parentId == null) {
                 query.limit = 10;
             }
-            else {
-                query.where = { id: id };
+            if (id) {
+                where.id = id;
+            }
+            if (parentId) {
+                where.parentId = parentId;
             }
             if (inlcudeLessons) {
                 query.include = [{ model: Lesson_1.Lesson, as: "Lessons" }];
             }
+            query.where = where;
             var data = yield Student_1.Student.findAll(query);
             return data;
         });
     }
-    getLessons(id = null) {
+    getLessons(id = null, day, studentId, teacherId) {
         return __awaiter(this, void 0, void 0, function* () {
             var query = {};
-            if (id == null) {
+            let _where = {};
+            _where.teacherId = (0, utils_1.whiteList)();
+            if (id == null && studentId == null && day == null && teacherId == null) {
                 query.limit = 10;
             }
             else {
-                query.where = { id: id };
+                if (id) {
+                    _where.id = id;
+                }
+                if (studentId) {
+                    _where.studentId = studentId;
+                }
+                if (day) {
+                    _where.day = day;
+                }
+                if (teacherId) {
+                    _where.teacherId = (0, utils_1.whiteList)(teacherId);
+                }
             }
+            query.where = _where;
             var data = yield Lesson_1.Lesson.findAll(query);
             return data;
         });
     }
-    getTakenLessons(id = null) {
+    getTakenLessons(id = null, teacherId = null, studentId = null) {
         return __awaiter(this, void 0, void 0, function* () {
             var query = {};
-            if (id == null) {
+            let _where = {};
+            _where.teacherId = (0, utils_1.whiteList)();
+            if (id == null && teacherId == null && studentId == null) {
                 query.limit = 10;
             }
-            else {
-                query.where = { id: id };
+            if (id) {
+                _where = { id: id };
             }
-            var data = yield TakenLesson_1.TakenLesson.findAll(query);
+            if (teacherId) {
+                _where.teacherId = (0, utils_1.whiteList)(teacherId);
+            }
+            if (studentId) {
+                _where.studentId = studentId;
+            }
+            query.where = _where;
+            var data = new takenLesson_1.default().takenLessons(yield TakenLesson_1.TakenLesson.findAll(query));
             return data;
+        });
+    }
+    getAllTeachers(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let query = {};
+            let _where = {};
+            if (id != null) {
+                _where.id = (0, utils_1.whiteList)(id);
+            }
+            else {
+                _where.id = (0, utils_1.whiteList)();
+            }
+            query.where = _where;
+            var data = yield Teacher_1.Teacher.findAll(query);
+            return new teacher_1.TeacherTransform().teachers(data);
         });
     }
     updateLessonSubject(id, subject) {

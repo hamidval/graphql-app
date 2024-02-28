@@ -10,7 +10,8 @@ exports.typeDef = (0, apollo_server_1.gql) `
 
     input StudentIdFilter {
         id: Int
-        inlcudeLessons:Boolean
+        parentId: Int
+        includeLessons: Boolean
     }
 `;
 //# sourceMappingURL=studentInput.js.map

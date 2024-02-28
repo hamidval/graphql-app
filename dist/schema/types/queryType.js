@@ -10,6 +10,7 @@ type Query
     students(studentInput: StudentInput) : [StudentType]
     lessons(lessonInput:LessonInput) : [LessonType]
     takenLessons(takenLessonInput: TakenLessonInput) : [TakenLessonType]
+    teachers(teacherInput: TeacherInput) : [TeacherType]
 }
 `;
 //# sourceMappingURL=queryType.js.map

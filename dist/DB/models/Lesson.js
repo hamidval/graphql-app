@@ -22,6 +22,30 @@ class Lesson extends sequelize_1.Model {
                 type: sequelize_1.DataTypes.INTEGER,
                 allowNull: false,
                 primaryKey: false
+            },
+            GroupFee: {
+                autoIncrement: false,
+                type: sequelize_1.DataTypes.DECIMAL,
+                allowNull: false,
+                primaryKey: false
+            },
+            GroupPay: {
+                autoIncrement: false,
+                type: sequelize_1.DataTypes.DECIMAL,
+                allowNull: false,
+                primaryKey: false
+            },
+            SingleFee: {
+                autoIncrement: false,
+                type: sequelize_1.DataTypes.DECIMAL,
+                allowNull: false,
+                primaryKey: false
+            },
+            SinglePay: {
+                autoIncrement: false,
+                type: sequelize_1.DataTypes.DECIMAL,
+                allowNull: false,
+                primaryKey: false
             }
         }, {
             sequelize,

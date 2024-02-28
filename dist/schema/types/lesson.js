@@ -10,6 +10,10 @@ type LessonType
     Day: DayType
     IsALevel: Boolean
     IsWeekend: Boolean
+    GroupFee: Float
+    GroupPay: Float
+    SingleFee: Float
+    SinglePay: Float
 }
 
 enum SubjectType 

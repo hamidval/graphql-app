@@ -18,6 +18,7 @@ const queryType_1 = require("./schema/types/queryType");
 const updateLessonSubject_1 = require("./schema/types/mutations/updateLessonSubject");
 const updateLessonSubjectInput_1 = require("./schema/types/mutations/updateLessonSubjectInput");
 const takenLesson_1 = require("./schema/types/takenLesson");
+const teacher_1 = require("./schema/types/teacher");
 class RequestQuery {
     constructor(body) {
         this.contains = function (node) {
@@ -37,7 +38,7 @@ exports.config = {
     typeDefs: [
         updateLessonSubjectInput_1.typeDef, updateLessonSubject_1.typeDef, parent_1.typeDef, student_1.typeDef, lesson_1.typeDef,
         lessonInput_1.typeDef, studentInput_1.typeDef, parentInput_1.typeDef,
-        queryType_1.typeDef, takenLesson_1.typeDef
+        queryType_1.typeDef, takenLesson_1.typeDef, teacher_1.typeDef
     ],
     dataSources,
     resolvers: schema_1.resolvers

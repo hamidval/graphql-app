@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.resolvers = void 0;
 const lesson_1 = __importDefault(require("../DB/transforms/lesson"));
 const parent_1 = __importDefault(require("../DB/transforms/parent"));
-const takenLesson_1 = __importDefault(require("../DB/transforms/takenLesson"));
 const utils_1 = require("../utils");
 const enums_1 = require("./enums");
 exports.resolvers = {
@@ -36,18 +35,22 @@ exports.resolvers = {
             return parents;
         }),
         students: (_, args, ctx) => __awaiter(void 0, void 0, void 0, function* () {
-            const { studentInput: { filter: { id: id, inlcudeLessons: inlcudeLessons } } } = args;
-            return yield ctx.dataSources.OaDb.getAllStudents(id, inlcudeLessons);
+            const { studentInput: { filter: { id: id, parentId: parentId, inlcudeLessons: inlcudeLessons } } } = args;
+            return yield ctx.dataSources.OaDb.getAllStudents(id, parentId, inlcudeLessons);
         }),
         lessons: (_, args, ctx) => __awaiter(void 0, void 0, void 0, function* () {
-            const { lessonInput: { filter: { id: id, studentId: studentId } } } = args;
-            var lessons = (new lesson_1.default()).lessons(yield ctx.dataSources.OaDb.getLessons(id));
+            const { lessonInput: { filter: { id: id, day: day, studentId: studentId, teacherId: teacherId } } } = args;
+            var lessons = (new lesson_1.default()).lessons(yield ctx.dataSources.OaDb.getLessons(id, day, studentId, teacherId));
             return lessons;
         }),
         takenLessons: (_, args, ctx) => __awaiter(void 0, void 0, void 0, function* () {
-            const { takenLessonInput: { filter: { id: id } } } = args;
-            var takenLessons = (new takenLesson_1.default).takenLessons(yield ctx.OaDb.getTakenLessons(id));
+            const { takenLessonInput: { filter: { id: id, studentId: studentId, teacherId: teacherId } } } = args;
+            var takenLessons = yield ctx.dataSources.OaDb.getTakenLessons(id, teacherId, studentId);
             return takenLessons;
+        }),
+        teachers: (_, args, ctx) => __awaiter(void 0, void 0, void 0, function* () {
+            const { teacherInput: { filter: { id: id } } } = args;
+            return yield ctx.dataSources.OaDb.getAllTeachers(id);
         })
     },
     Mutation: {

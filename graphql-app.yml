@@ -1,0 +1,46 @@
+---
+resources:
+- name: graphql-app
+  type: git
+  icon: github
+  source:
+    uri: https://github.com/hamidval/graphql-app.git
+
+- name: node-image
+  type: registry-image
+  source:
+    repository: node
+    tag: 18
+
+jobs:
+- name: graphql-app
+  public: true
+  plan:
+  - get: node-image
+  - get: graphql-app
+    trigger: true
+  - task: install
+    image: node-image
+    config:
+      inputs:
+      - name: graphql-app
+      outputs:
+      - name: dependencies
+        path: graphql-app/node_modules
+      platform: linux
+      run:
+        path: npm
+        args: ["install"]
+        dir: graphql-app
+  - task: test
+    image: node-image
+    config:
+      inputs:
+      - name: graphql-app
+      - name: dependencies
+        path: graphql-app/node_modules
+      platform: linux
+      run:
+        path: npm
+        args: ["run", "test"]
+        dir: graphql-app

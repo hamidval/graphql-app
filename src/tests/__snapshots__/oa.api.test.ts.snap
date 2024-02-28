@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`resolvers get lessons by teacher id 1`] = `
+{
+  "data": {
+    "lessons": [
+      {
+        "Id": 526,
+      },
+      {
+        "Id": 979,
+      },
+      {
+        "Id": 1010,
+      },
+      {
+        "Id": 1023,
+      },
+      {
+        "Id": 1030,
+      },
+      {
+        "Id": 1038,
+      },
+      {
+        "Id": 1089,
+      },
+      {
+        "Id": 1122,
+      },
+      {
+        "Id": 1138,
+      },
+      {
+        "Id": 1174,
+      },
+      {
+        "Id": 1178,
+      },
+      {
+        "Id": 1248,
+      },
+      {
+        "Id": 1320,
+      },
+      {
+        "Id": 1335,
+      },
+      {
+        "Id": 1337,
+      },
+      {
+        "Id": 1344,
+      },
+      {
+        "Id": 1359,
+      },
+      {
+        "Id": 1409,
+      },
+      {
+        "Id": 1410,
+      },
+      {
+        "Id": 1420,
+      },
+      {
+        "Id": 1421,
+      },
+      {
+        "Id": 1508,
+      },
+      {
+        "Id": 1569,
+      },
+      {
+        "Id": 1575,
+      },
+      {
+        "Id": 1584,
+      },
+      {
+        "Id": 1625,
+      },
+      {
+        "Id": 1640,
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": {
+    "headers": Headers {
+      Symbol(map): {},
+    },
+  },
+}
+`;
+
+exports[`resolvers random test 1`] = `
+{
+  "data": {
+    "students": [],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": {
+    "headers": Headers {
+      Symbol(map): {},
+    },
+  },
+}
+`;
+
+exports[`resolvers test lessons 1`] = `
+{
+  "data": {
+    "lessons": [],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": {
+    "headers": Headers {
+      Symbol(map): {},
+    },
+  },
+}
+`;
+
+exports[`resolvers test parents 1`] = `
+{
+  "data": {
+    "parents": [],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": {
+    "headers": Headers {
+      Symbol(map): {},
+    },
+  },
+}
+`;
+
+exports[`resolvers test students 1`] = `
+{
+  "data": {
+    "students": [],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": {
+    "headers": Headers {
+      Symbol(map): {},
+    },
+  },
+}
+`;
+
+exports[`resolvers test taken lessons 1`] = `
+{
+  "data": {
+    "takenLessons": [],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": {
+    "headers": Headers {
+      Symbol(map): {},
+    },
+  },
+}
+`;

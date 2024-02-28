@@ -7,6 +7,8 @@ exports.typeDef = (0, apollo_server_1.gql) `
     {
         id: Int
         studentId:Int
+        day:Int
+        teacherId: Int
     }
 
     input LessonInput 

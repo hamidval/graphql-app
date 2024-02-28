@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../../utils");
 class TakenLessonTransforms {
     constructor() { }
     takenLessons(takenLessons) {
@@ -10,7 +11,11 @@ class TakenLessonTransforms {
             Id: takenLesson.Id,
             Subject: takenLesson.Subject,
             Hours: takenLesson.Hours,
-            Status: this.getStatus(takenLesson.Code)
+            Status: this.getStatus(takenLesson.LessonCode),
+            Date: (0, utils_1.formatDate)(takenLesson.LessonDate),
+            TotalFee: takenLesson.TotalFee,
+            TotalPay: takenLesson.TotalPay,
+            StudentId: takenLesson.StudentId
         };
     }
     getStatus(code) {

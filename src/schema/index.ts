@@ -36,11 +36,12 @@ export const resolvers: any =
         },
         students: async (_, args, ctx) =>
         {
+            
             const 
             {
                 studentInput: 
                 {
-                    filter: {id: id,parentId: parentId, inlcudeLessons: inlcudeLessons}
+                    filter: {id: id, parentId: parentId, inlcudeLessons: inlcudeLessons}
                 }
             } = args;
 

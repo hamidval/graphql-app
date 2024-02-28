@@ -17,7 +17,7 @@ class TakenLesson extends sequelize_1.Model {
                 allowNull: false,
                 primaryKey: true
             },
-            Code: {
+            LessonCode: {
                 autoIncrement: false,
                 type: sequelize_1.DataTypes.INTEGER,
                 allowNull: false,
@@ -26,6 +26,30 @@ class TakenLesson extends sequelize_1.Model {
             Hours: {
                 autoIncrement: false,
                 type: sequelize_1.DataTypes.DECIMAL,
+                allowNull: false,
+                primaryKey: true
+            },
+            LessonDate: {
+                autoIncrement: false,
+                type: sequelize_1.DataTypes.DATE,
+                allowNull: false,
+                primaryKey: true
+            },
+            TotalPay: {
+                autoIncrement: false,
+                type: sequelize_1.DataTypes.DOUBLE,
+                allowNull: false,
+                primaryKey: true
+            },
+            TotalFee: {
+                autoIncrement: false,
+                type: sequelize_1.DataTypes.DOUBLE,
+                allowNull: false,
+                primaryKey: true
+            },
+            StudentId: {
+                autoIncrement: false,
+                type: sequelize_1.DataTypes.INTEGER,
                 allowNull: false,
                 primaryKey: true
             }

@@ -9,6 +9,6 @@ export const typeDef = gql`
     input StudentIdFilter {
         id: Int
         parentId: Int
-        inlcudeLessons:Boolean
+        includeLessons: Boolean
     }
 `;

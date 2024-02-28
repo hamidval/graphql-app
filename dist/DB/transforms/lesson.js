@@ -12,7 +12,11 @@ class LessonTransforms {
             Day: lesson.Day,
             Subject: lesson.Subject,
             IsALevel: this.isALevel(lesson.Subject),
-            IsWeekend: this.isWeekend(lesson.Day)
+            IsWeekend: this.isWeekend(lesson.Day),
+            SingleFee: lesson.SingleFee,
+            SinglePay: lesson.SinglePay,
+            GroupFee: lesson.GroupFee,
+            GroupPay: lesson.GroupPay
         };
     }
     isALevel(subject) {

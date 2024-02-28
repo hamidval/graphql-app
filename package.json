@@ -13,10 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@npmcli/config": "^8.1.0",
     "@types/accept-language-parser": "^1.5.6",
     "apollo-datasource": "^3.3.2",
     "apollo-server": "^3.13.0",
     "apollo-server-caching": "^3.3.0",
+    "eslint-plugin-jest": "^27.9.0",
     "graphql": "^16.8.1",
     "graphql-test": "^0.0.1",
     "lodash": "^4.17.21",
@@ -26,15 +28,31 @@
     "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-typescript": "^7.23.3",
     "@jest/globals": "^29.7.0",
     "@types/express": "^4.17.1",
     "@types/jest": "^29.5.12",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^29.7.0",
     "dotenv": "^16.4.5",
     "express": "^4.17.1",
     "install": "^0.13.0",
     "jest": "^29.7.0",
     "nodemon": "^3.0.3",
     "npm": "^10.4.0",
+    "ts-jest": "^29.1.2",
     "typescript": "^5.3.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "transform": {
+      "node_modules/variables/.+\\.(j|t)sx?$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!variables/.*)"
+    ]
   }
 }

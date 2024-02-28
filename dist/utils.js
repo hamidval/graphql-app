@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Enum = void 0;
+exports.formatDate = exports.whiteList = exports.Enum = void 0;
 class Enum {
     static isString(name) {
         return !name.match(this.REGEXP);
@@ -30,4 +30,23 @@ class Enum {
 }
 exports.Enum = Enum;
 Enum.REGEXP = /^-?[0-9]+$/g;
+function whiteList(id = null) {
+    var whiteList = [1, 43, 41, 32, 56, 36];
+    if (id != null) {
+        return whiteList.filter((x) => x == id);
+    }
+    else {
+        return whiteList;
+    }
+}
+exports.whiteList = whiteList;
+const formatDate = (date) => {
+    var d = new Date(date), month = '' + (d.getMonth() + 1), day = '' + d.getDate(), year = d.getFullYear();
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+    return [day, month, year].join('-');
+};
+exports.formatDate = formatDate;
 //# sourceMappingURL=utils.js.map
